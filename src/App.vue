@@ -26,7 +26,7 @@
       <v-spacer></v-spacer>
 
       <v-btn
-        @click="$router.push('/about')"
+        @click="goAbout"
         target="_blank"
         text
       >
@@ -46,6 +46,11 @@ export default {
   name: "App",
   data: () => ({
     //
-  })
+  }),
+  methods: {
+    goAbout() {
+      this.$router.push("/about").catch(() => {})
+    }
+  }
 };
 </script>
