@@ -1,7 +1,12 @@
 <template>
   <v-row>
     <v-col cols="10">
-      <v-text-field name="name" label="Task" id="id" v-model="taskTextField">
+      <v-text-field
+        name="name"
+        label="Task"
+        id="id"
+        v-model="taskTextField"
+        @keyup.enter="addTask">
       </v-text-field>
     </v-col>
 

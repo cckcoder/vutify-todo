@@ -8,7 +8,7 @@
               :key="index"
             >
               <v-col cols="12" class="d-flex flex-row align-center pa-0">
-              <v-checkbox class="mr-3" v-model="value" value="value"></v-checkbox>
+              <v-checkbox class="mr-3" v-model="todo.complete"></v-checkbox>
               <span>{{ todo.title }}</span>
               <v-spacer></v-spacer>
               <v-btn @click="$emit('onRemove', todo.id)" color="error">X</v-btn>

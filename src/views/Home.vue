@@ -5,6 +5,12 @@
       <TodoAdd @onSubmit="addTask"/>
       <!-- Todo  List-->
       <TodoList :todos="todos" @onRemove="removeTask" />
+      <v-row class="d-flex justify-center">
+        <img src="@/assets/logo.png" alt="" class="mt-5">
+      </v-row>
+      <v-img src="@/assets/logo.png"
+        contain
+        max-height="200"/>
     </v-container>
   </div>
 </template>
@@ -21,7 +27,7 @@ export default {
   },
   data: () => ({
     todos: [
-      { id: 1, title: "Task 1", complete: false },
+      { id: 1, title: "Task 1", complete: true },
       { id: 2, title: "Task 2", complete: true },
       { id: 3, title: "Task 3", complete: false },
     ]
