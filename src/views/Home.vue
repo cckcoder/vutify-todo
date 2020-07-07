@@ -5,12 +5,6 @@
       <TodoAdd @onSubmit="addTask"/>
       <!-- Todo  List-->
       <TodoList :todos="todos" @onRemove="removeTask" />
-      <v-row class="d-flex justify-center">
-        <img src="@/assets/logo.png" alt="" class="mt-5">
-      </v-row>
-      <v-img src="@/assets/logo.png"
-        contain
-        max-height="200"/>
     </v-container>
   </div>
 </template>
@@ -18,15 +12,21 @@
 <script>
 import TodoList from '@/components/TodoList.vue'
 import TodoAdd from '@/components/TodoAdd.vue'
+import axios from 'axios'
 
 export default {
   name: "Home",
+  async mounted() {
+    let fetch_todos = await axios.get('https://jsonplaceholder.typicode.com/todos')
+    this.todos = fetch_todos.data;
+  },
   components: {
     TodoList,
     TodoAdd
   },
   data: () => ({
-    todos: [
+    todos: [],
+    todos_mocup: [
       { id: 1, title: "Task 1", complete: true },
       { id: 2, title: "Task 2", complete: true },
       { id: 3, title: "Task 3", complete: false },
