@@ -4,7 +4,7 @@
       <!-- Todo add -->
       <TodoAdd @onSubmit="addTask"/>
       <!-- Todo  List-->
-      <TodoList :todos="todos" @onRemove="removeTask" />
+      <TodoList :todos="reversedTodos" @onRemove="removeTask" />
     </v-container>
   </div>
 </template>
@@ -32,9 +32,15 @@ export default {
       { id: 3, title: "Task 3", complete: false },
     ]
   }),
+  computed: {
+    reversedTodos() {
+      return this.todos.slice().reverse()
+    }
+  },
   methods: {
-    addTask(task) {
-      this.todos.push(task)
+    async addTask(task) {
+      let result = await axios.post('https://jsonplaceholder.typicode.com/todos', task)
+      this.todos.push(result.data)
     },
     removeTask(id) {
       this.todos = this.todos.filter(todo => todo.id !== id)
